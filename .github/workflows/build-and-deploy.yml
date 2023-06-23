@@ -13,7 +13,7 @@ jobs:
       IMAGE_NAME: vtri/sinfri-client
       DIGITAL_ACCESS_TOKEN: ${{ secrets.DIGITAL_ACCESS_TOKEN }}
       CLUSTER_NAME: ${{ secrets.CLUSTER_NAME }}
-      DEPLOYMENT_NAME: sinfri-client
+      DEPLOYMENT_NAME: simfri-client
 
     steps:
       - uses: actions/checkout@v3
