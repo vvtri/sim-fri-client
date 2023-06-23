@@ -2,6 +2,7 @@ FROM node:18-alpine as builder
 
 WORKDIR /usr/src/app
 COPY package.json ./
+COPY yarn.lock ./
 
 RUN yarn install --network-concurrency 1 --ignore-scripts --frozen-lockfile
 COPY . ./
