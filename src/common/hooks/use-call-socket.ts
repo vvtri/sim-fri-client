@@ -9,7 +9,7 @@ export const useCallSocketContext = () => {
   const [callSocketState, setCallSocketState] = useState<Socket | undefined>();
 
   useEffect(() => {
-    chatSocket = io(`ws://localhost:5003/call`, {
+    chatSocket = io(process.env.NEXT_PUBLIC_CALL_SOCKET as string, {
       extraHeaders: { authorization: getAccessToken() } as any,
     });
     chatSocket.on('connect', () => {
