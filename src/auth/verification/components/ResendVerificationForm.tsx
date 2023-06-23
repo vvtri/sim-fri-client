@@ -50,14 +50,13 @@ export const ResendVerificationForm = () => {
         const res = error.response?.data as IApiError;
         switch (res.statusCode) {
           case AuthStatusCode.USER_NOT_FOUND:
-            msg = 'Email không tồn tại';
+            msg = 'Email exists';
             break;
           case AuthStatusCode.USER_VERIFIED:
-            msg = 'Email đã được xác thực';
+            msg = 'Email verified';
             break;
           case AuthStatusCode.TOO_MANY_VERIFICATION_REQUEST:
-            msg =
-              'Bạn đã yêu cầu xác thực quá nhiều lần, vui lòng thử lại vào ngày mai';
+            msg = 'Too many verification request, please retry tomorrow';
             break;
         }
       }
@@ -79,7 +78,7 @@ export const ResendVerificationForm = () => {
         <Stack direction="column" width="100%" spacing="12px">
           <Box display="flex" justifyContent="center" alignItems="center">
             <Typography variant="h4" fontWeight="bold">
-              Gửi lại mã xác thực
+              Resend verification code
             </Typography>
           </Box>
           <FormControl>
@@ -123,7 +122,7 @@ export const ResendVerificationForm = () => {
                 color="primary.main"
                 sx={{ '&:hover': { textDecoration: 'underline' } }}
               >
-                Quên mật khẩu
+                Forget password
               </Typography>
             </Link>
 
@@ -135,7 +134,7 @@ export const ResendVerificationForm = () => {
                 color="primary.main"
                 sx={{ '&:hover': { textDecoration: 'underline' } }}
               >
-                Gửi lại mã xác thực
+                Resend verification code
               </Typography>
             </Link>
           </Stack>
@@ -159,7 +158,7 @@ export const ResendVerificationForm = () => {
             >
               <Link href="/auth/register">
                 <Box color="white" fontSize="17px">
-                  Tạo tài khoản mới
+                  Create new account
                 </Box>
               </Link>
             </Box>

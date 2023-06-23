@@ -21,6 +21,6 @@ ENV NEXT_PUBLIC_HOST=$NEXT_PUBLIC_HOST
 
 RUN yarn build 
 
-EXPOSE 5000
+EXPOSE 3000
 CMD ["yarn", "start"]
 

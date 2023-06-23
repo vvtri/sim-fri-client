@@ -51,7 +51,7 @@ export const RegisterForm = () => {
         const res = error.response?.data as IApiError;
         switch (res.statusCode) {
           case AuthStatusCode.USER_EXISTED:
-            msg = 'Email đã tồn tại';
+            msg = 'Email exists';
             break;
         }
       }
@@ -73,7 +73,7 @@ export const RegisterForm = () => {
         <Stack direction="column" width="100%" spacing="12px">
           <Box display="flex" justifyContent="center" alignItems="center">
             <Typography variant="h4" fontWeight="bold">
-              Đăng ký
+              Register
             </Typography>
           </Box>
           <FormControl>
@@ -87,10 +87,10 @@ export const RegisterForm = () => {
               {...register('email')}
             />
           </FormControl>
-          <RHFPassword label="Mật khẩu" name="password" />
+          <RHFPassword label="Password" name="password" />
           <RHFPassword
             name="rePassword"
-            label="Nhập lại mật khẩu"
+            label="Re-enter password"
             variant="outlined"
             color="primary"
             fullWidth
@@ -104,7 +104,7 @@ export const RegisterForm = () => {
               type="submit"
               loading={isLoading}
             >
-              Đăng ký
+              Register
             </LoadingButton>
           </Box>
           {errors.root?.message && (
@@ -125,7 +125,7 @@ export const RegisterForm = () => {
                 color="primary.main"
                 sx={{ '&:hover': { textDecoration: 'underline' } }}
               >
-                Quên mật khẩu
+                Forget password
               </Typography>
             </Link>
 
@@ -137,7 +137,7 @@ export const RegisterForm = () => {
                 color="primary.main"
                 sx={{ '&:hover': { textDecoration: 'underline' } }}
               >
-                Gửi lại mã xác thực
+                Resend verification code
               </Typography>
             </Link>
           </Stack>
@@ -161,7 +161,7 @@ export const RegisterForm = () => {
             >
               <Link href="/auth/login">
                 <Box color="white" fontSize="17px">
-                  Đăng nhập
+                  Login
                 </Box>
               </Link>
             </Box>

@@ -82,15 +82,14 @@ export const VerifyUserForm = () => {
           <TextField
             variant="outlined"
             color="primary"
-            label="Mã xác thực"
+            label="Verification code"
             fullWidth
             error={Boolean(errors.code)}
             helperText={errors.code?.message as any}
             {...register('code')}
           />
           <FormHelperText>
-            Chúng tôi đã gửi mã xác thực đến email {email}, hãy chờ trong vài
-            phút.
+            We have sent a verification code, please check your email
           </FormHelperText>
           <Box>
             <LoadingButton
@@ -101,7 +100,7 @@ export const VerifyUserForm = () => {
               type="submit"
               loading={isLoading}
             >
-              Xác nhận
+              Confirm
             </LoadingButton>
           </Box>
           {errors.root?.message && (
@@ -122,7 +121,7 @@ export const VerifyUserForm = () => {
                 color="primary.main"
                 sx={{ '&:hover': { textDecoration: 'underline' } }}
               >
-                Quên mật khẩu
+                Forget password
               </Typography>
             </Link>
             <Link href="/auth/verification/resend">
@@ -133,7 +132,7 @@ export const VerifyUserForm = () => {
                 color="primary.main"
                 sx={{ '&:hover': { textDecoration: 'underline' } }}
               >
-                Gửi lại mã xác thực
+                Resend verification code
               </Typography>
             </Link>
           </Stack>
@@ -157,7 +156,7 @@ export const VerifyUserForm = () => {
             >
               <Link href="/auth/register">
                 <Box color="white" fontSize="17px">
-                  Tạo tài khoản mới
+                  Create new account
                 </Box>
               </Link>
             </Box>

@@ -9,7 +9,7 @@ type RHFPasswordProps = {
 } & Parameters<typeof TextField>[0];
 
 export const RHFPassword = ({
-  label = 'Mật khẩu',
+  label = 'Password',
   name,
   ...other
 }: RHFPasswordProps) => {

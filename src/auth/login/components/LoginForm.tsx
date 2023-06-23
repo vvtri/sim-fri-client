@@ -69,7 +69,7 @@ export const LoginForm = () => {
             msg = 'Password not match';
             break;
           case AuthStatusCode.USER_NOT_VERIFIED:
-            msg = 'Tài khoản chưa được xác thực';
+            msg = 'Unverified email';
             break;
         }
       }
@@ -97,7 +97,7 @@ export const LoginForm = () => {
         <Stack direction="column" width="100%" spacing="12px">
           <Box display="flex" justifyContent="center" alignItems="center">
             <Typography variant="h4" fontWeight="bold">
-              Đăng nhập
+              Login
             </Typography>
           </Box>
           <FormControl>
@@ -121,7 +121,7 @@ export const LoginForm = () => {
               type="submit"
               loading={isLoading}
             >
-              Đăng nhập
+              Login
             </LoadingButton>
           </Box>
           {errors.root?.message && (
@@ -142,7 +142,7 @@ export const LoginForm = () => {
                 color="primary.main"
                 sx={{ '&:hover': { textDecoration: 'underline' } }}
               >
-                Quên mật khẩu
+                Forget password
               </Typography>
             </Link>
 
@@ -154,7 +154,7 @@ export const LoginForm = () => {
                 color="primary.main"
                 sx={{ '&:hover': { textDecoration: 'underline' } }}
               >
-                Gửi lại mã xác thực
+                Resend verification code
               </Typography>
             </Link>
           </Stack>
@@ -178,7 +178,7 @@ export const LoginForm = () => {
             >
               <Link href="/auth/register">
                 <Box color="white" fontSize="17px">
-                  Tạo tài khoản mới
+                  Create new account
                 </Box>
               </Link>
             </Box>
@@ -199,7 +199,7 @@ export const LoginForm = () => {
           >
             <Stack direction="row">
               <Typography paragraph variant="body1" mb="0">
-                Email {getValues().email} chưa được xác thực!
+                Email {getValues().email} is unverified!
               </Typography>
               <Typography
                 paragraph
@@ -210,7 +210,7 @@ export const LoginForm = () => {
                 mb="0"
                 onClick={() => goToVerification()}
               >
-                Xác thực ngay
+                Verify
               </Typography>
             </Stack>
           </Box>
