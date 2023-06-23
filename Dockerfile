@@ -1,5 +1,7 @@
 FROM node:18-alpine as builder
 
+RUN apk update && apk add git openssh
+
 WORKDIR /usr/src/app
 COPY package.json ./
 COPY yarn.lock ./
