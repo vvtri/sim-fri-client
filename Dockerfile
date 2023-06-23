@@ -3,6 +3,9 @@ FROM node:18-alpine as builder
 WORKDIR /usr/src/app
 COPY package.json ./
 
+RUN yarn install --network-concurrency 1 --ignore-scripts --frozen-lockfile
+COPY . ./
+
 ARG NEXT_PUBLIC_CALL_SOCKET
 ARG NEXT_PUBLIC_CHAT_SOCKET
 ARG NEXT_PUBLIC_BASE_URL
@@ -12,9 +15,6 @@ ENV NEXT_PUBLIC_CALL_SOCKET=$NEXT_PUBLIC_CALL_SOCKET
 ENV NEXT_PUBLIC_CHAT_SOCKET=$NEXT_PUBLIC_CHAT_SOCKET
 ENV NEXT_PUBLIC_BASE_URL=$NEXT_PUBLIC_BASE_URL
 ENV NEXT_PUBLIC_HOST=$NEXT_PUBLIC_HOST
-
-RUN yarn install --network-concurrency 1 --ignore-scripts --frozen-lockfile
-COPY . ./
 
 RUN yarn build 
 
