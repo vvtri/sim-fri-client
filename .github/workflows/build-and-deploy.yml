@@ -10,10 +10,10 @@ jobs:
     env:
       DOCKER_USER: ${{ secrets.DOCKER_USER }}
       DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-      IMAGE_NAME: vtri/sinfri-client
+      IMAGE_NAME: vtri/sim-fri-client
       DIGITAL_ACCESS_TOKEN: ${{ secrets.DIGITAL_ACCESS_TOKEN }}
       CLUSTER_NAME: ${{ secrets.CLUSTER_NAME }}
-      DEPLOYMENT_NAME: simfri-client
+      DEPLOYMENT_NAME: sim-fri-client
 
     steps:
       - uses: actions/checkout@v3

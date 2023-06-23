@@ -63,10 +63,10 @@ export const LoginForm = () => {
         const res = error.response?.data as IApiError;
         switch (res.statusCode) {
           case AuthStatusCode.USER_NOT_FOUND:
-            msg = 'Tài khoản không tồn tại';
+            msg = 'Email not exists';
             break;
           case AuthStatusCode.INVALID_PASSWORD:
-            msg = 'Mật khẩu không đúng';
+            msg = 'Password not match';
             break;
           case AuthStatusCode.USER_NOT_VERIFIED:
             msg = 'Tài khoản chưa được xác thực';
