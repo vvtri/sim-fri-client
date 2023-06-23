@@ -13,7 +13,7 @@ ENV NEXT_PUBLIC_CHAT_SOCKET=$NEXT_PUBLIC_CHAT_SOCKET
 ENV NEXT_PUBLIC_BASE_URL=$NEXT_PUBLIC_BASE_URL
 ENV NEXT_PUBLIC_HOST=$NEXT_PUBLIC_HOST
 
-RUN yarn 
+RUN yarn install --network-concurrency 1 --ignore-scripts --frozen-lockfile
 COPY . ./
 
 RUN yarn build 
