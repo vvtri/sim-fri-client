@@ -181,7 +181,7 @@ const messageSlice = createSlice({
         );
       }
 
-      // openConversations.unshift({ isNewConversation: false, conversation });
+      openConversations.unshift({ isNewConversation: false, conversation });
       state.messageBox.openConversations = openConversations;
     });
     builder.addCase(findConversationThunk.fulfilled, (state, action) => {

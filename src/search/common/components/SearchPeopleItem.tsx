@@ -84,7 +84,7 @@ export const SearchPeopleItem = ({ user }: SearchPeopleItemProps) => {
                 {profile.name}
               </Typography>
             </Link>
-            <Typography color="secondaryText.main" fontSize="0.9375rem">
+            <Typography color="secondaryText.main" fontSize="0.9375rem" noWrap>
               {friendRequestType === FriendType.BE_FRIEND && (
                 <>Friend &#183; </>
               )}
