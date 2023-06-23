@@ -11,7 +11,7 @@ import { useDeleteFriendRequest } from '../../../friend/common/hooks/use-delete-
 import { IFriend } from '../../../friend/common/models/friend.model';
 import { mapFriendType } from '../../../friend/common/utils/friend.util';
 import { useAppDispatch } from '../../../redux/hook';
-import { addConversationThunk } from '../../../redux/slices/message.slice';
+import { findConversationThunk } from '../../../redux/slices/message.slice';
 
 type SearchPeopleItemProps = {
   user: IUser;
@@ -48,7 +48,7 @@ export const SearchPeopleItem = ({ user }: SearchPeopleItemProps) => {
         if (!isAddingFriend) addFriend(user.id);
         break;
       case FriendType.BE_FRIEND:
-        dispatch(addConversationThunk(user.id));
+        dispatch(findConversationThunk(user.id));
         break;
       case FriendType.REQUESTING:
         if (!isDeletingFriend) deleteFriend(user.id);

@@ -1,6 +1,9 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IConversation } from '../../message/common/models/conversation.model';
-import { getDetailConversation } from '../../message/common/services/conversation.service';
+import {
+  getConversationByUser,
+  getDetailConversation,
+} from '../../message/common/services/conversation.service';
 import { IUserProfile } from '../../profile/common/models/user-profile.model';
 import { RootState } from '../store';
 
@@ -40,6 +43,19 @@ const addConversationThunk = createAsyncThunk(
     try {
       const conversation = await getDetailConversation(conversationId);
       return { conversation, userId, shouldCloseCreate };
+    } catch (error) {
+      console.log(error);
+      return null;
+    }
+  },
+);
+
+const findConversationThunk = createAsyncThunk(
+  'message/findConversationThunk',
+  async (userId: number) => {
+    try {
+      const conversation = await getConversationByUser(userId);
+      return { userId, conversation };
     } catch (error) {
       console.log(error);
       return null;
@@ -168,10 +184,32 @@ const messageSlice = createSlice({
       // openConversations.unshift({ isNewConversation: false, conversation });
       state.messageBox.openConversations = openConversations;
     });
+    builder.addCase(findConversationThunk.fulfilled, (state, action) => {
+      if (!action.payload) return;
+
+      const { conversation, userId } = action.payload;
+
+      if (!conversation) return;
+
+      state.messageBox.openConversations =
+        state.messageBox.openConversations.filter((item) => {
+          if (item.isCreateConversation) return true;
+
+          if (item.isNewConversation && item.userProfile?.user.id === userId)
+            return false;
+
+          return item.conversation?.id !== conversation.id;
+        });
+
+      state.messageBox.openConversations.unshift({
+        conversation,
+        isNewConversation: false,
+      });
+    });
   },
 });
 
-export { addConversationThunk };
+export { addConversationThunk, findConversationThunk };
 
 export const {
   setConversationListPanel,
