@@ -14,7 +14,7 @@ import verifyUserReducer from './slices/verify-user.slice';
 const rootPersistConfig = {
   key: 'root',
   storage,
-  blacklist: ['common'],
+  blacklist: ['common', 'post'],
   version: 1,
 };
 
@@ -25,12 +25,19 @@ const commonPersistConfig = {
   version: 1,
 };
 
+const postPersistConfig = {
+  key: 'post',
+  storage,
+  blacklist: ['viewPost'],
+  version: 1,
+};
+
 const rootReducer = combineReducers({
   common: persistReducer(commonPersistConfig, commonSlice),
   auth: authReducer,
   verifyUser: verifyUserReducer,
   profile: profileSlice,
-  post: postSlice,
+  post: persistReducer(postPersistConfig, postSlice),
   message: messageSlice,
   friend: friendSlice,
   search: searchSlice,
