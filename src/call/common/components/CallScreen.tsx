@@ -42,7 +42,7 @@ type CallScreenProps = {
 };
 
 export const CallScreen = ({ conversationId, roomId }: CallScreenProps) => {
-  const { callSocket } = useCallSocket();
+  const { callSocket, isConnected } = useCallSocket();
   const { userProfile } = useAuth();
   const myVideoRef = useRef<HTMLVideoElement | null>(null);
   const [peerInfos, setPeerInfos] = useState<PeerInfo[]>([]);
@@ -65,6 +65,8 @@ export const CallScreen = ({ conversationId, roomId }: CallScreenProps) => {
     );
 
   useEffect(() => {
+    if (!isConnected) return;
+
     navigator.mediaDevices
       .getUserMedia({ audio: true, video: true })
       .then((stream) => {
@@ -110,6 +112,8 @@ export const CallScreen = ({ conversationId, roomId }: CallScreenProps) => {
       });
 
     return () => {
+      if (!isConnected) return;
+
       callSocket.off(WS_MESSAGE_EVENT.JOINED_ROOM);
       callSocket.off(WS_MESSAGE_EVENT.NEW_USER_JOINED);
       callSocket.off(WS_MESSAGE_EVENT.RECEIVE_RETURN_SIGNAL);
@@ -117,7 +121,7 @@ export const CallScreen = ({ conversationId, roomId }: CallScreenProps) => {
       callSocket.off(WS_MESSAGE_EVENT.TOGGLE_MIC);
       callSocket.off(WS_MESSAGE_EVENT.TOGGLE_CAMERA);
     };
-  }, [callSocket]);
+  }, [callSocket, isConnected]);
 
   useEffect(() => {
     const video = myVideoRef.current;
@@ -181,7 +185,6 @@ export const CallScreen = ({ conversationId, roomId }: CallScreenProps) => {
     }
   };
 
-
   return (
     <Stack
       position="fixed"
@@ -237,8 +240,17 @@ export const CallScreen = ({ conversationId, roomId }: CallScreenProps) => {
       )}
 
       {!peerInfos.length && !calledUser && (
-        <Stack justifyContent="center" alignItems="center">
-          <Box component="img" src="/images/call-bg.jpg"></Box>
+        <Stack
+          justifyContent="center"
+          alignItems="center"
+          height="calc(100% - 250px)"
+        >
+          <Box
+            component="img"
+            src="/images/call-bg.jpg"
+            sx={{ objectFit: 'contain' }}
+            height="calc(100% - 50px)"
+          />
         </Stack>
       )}
 
