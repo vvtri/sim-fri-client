@@ -8,6 +8,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { FormEventHandler, useEffect, useMemo, useRef, useState } from 'react';
+import ReactSimpleImageViewer from 'react-simple-image-viewer';
 import { shallowEqualArrays } from 'shallow-equal';
 import { WS_MESSAGE_EVENT } from 'shared';
 import { AuthControlPanel } from '../../auth/control-panel/components/AuthControlPanel';
@@ -21,6 +22,10 @@ import { MessageBoxList } from '../../message/message-box/components/MessageBoxL
 import { useInfiniteNoti } from '../../noti/common/hooks/use-infinite-noti';
 import { ListNotiPanel } from '../../noti/noti-panel/components/ListNotiPanel';
 import { useAppDispatch, useAppSelector } from '../../redux/hook';
+import {
+  setViewImageUrl,
+  viewImageUrlSelector,
+} from '../../redux/slices/common.slice';
 import {
   addConversationMessageBox,
   conversationListPanelSelector,
@@ -67,6 +72,11 @@ export const Header = () => {
   } = useInfiniteNoti({
     limit: 20,
   });
+  const imageUrl = useAppSelector(viewImageUrlSelector);
+
+  const closeImage = () => {
+    dispatch(setViewImageUrl(undefined));
+  };
 
   let unreadConversation = useMemo(() => {
     let temp = 0;
@@ -361,6 +371,22 @@ export const Header = () => {
         fetchMoreConversation={fetchNextPageNoti}
         noties={noties}
       />
+
+      {imageUrl && (
+        <ReactSimpleImageViewer
+          src={[imageUrl] as any}
+          currentIndex={0}
+          disableScroll={true}
+          closeOnClickOutside={true}
+          onClose={closeImage}
+          backgroundStyle={{
+            animation: 'createBox 0.09s',
+            backgroundColor: 'rgba(0,0,0,.8)',
+            paddingTop: '10vh',
+            paddingBottom: '10vh',
+          }}
+        />
+      )}
     </Stack>
   );
 };

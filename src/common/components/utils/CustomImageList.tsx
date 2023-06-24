@@ -1,5 +1,6 @@
 import { Box, BoxProps } from '@mui/material';
 import { IFile } from '../../../file/common/models/file.model';
+import { ViewableImage } from './ViewableImage';
 
 type ImageListProps = BoxProps & {
   files: IFile[];
@@ -15,7 +16,7 @@ export const CustomImageList = ({ files, ...rest }: ImageListProps) => {
           width="fit-content"
           maxWidth="100%"
         >
-          <Box
+          <ViewableImage
             component="img"
             src={item.url}
             sx={{
@@ -23,6 +24,7 @@ export const CustomImageList = ({ files, ...rest }: ImageListProps) => {
               maxHeight: '100%',
               objectFit: 'contain',
             }}
+            width="100%"
           />
         </Box>
       ))}

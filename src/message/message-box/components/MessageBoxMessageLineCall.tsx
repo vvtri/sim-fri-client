@@ -89,10 +89,12 @@ export const MessageBoxMessageCall = ({
 
         <Stack direction="row" alignItems="flex-end" spacing="4px">
           {!isMyMsg && (
-            <Avatar
-              src={authorAvt}
-              sx={{ width: '28px', height: '28px', mb: '4px' }}
-            />
+            <Tooltip title={author?.user.profile.name} placement='left'>
+              <Avatar
+                src={authorAvt}
+                sx={{ width: '28px', height: '28px', mb: '4px' }}
+              />
+            </Tooltip>
           )}
 
           <Stack>

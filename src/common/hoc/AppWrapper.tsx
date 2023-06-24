@@ -71,10 +71,6 @@ export const AppWrapper = ({ children, ...rest }: AppWrapperProps) => {
             borderRadius: '10px',
             backgroundColor: '#9f9f9f',
           },
-          // '[data-popper-escaped]': {
-          //   visibility: 'hidden',
-          //   pointerEvents: 'none',
-          // },
           '::-internal-autofill-selected': {
             backgroundColor: 'unset',
           },

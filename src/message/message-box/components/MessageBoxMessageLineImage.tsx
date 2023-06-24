@@ -10,6 +10,7 @@ import dayjs from 'dayjs';
 import { useEffect, useRef, useState } from 'react';
 import { MessageReadInfoStatus } from 'shared';
 import { IUser } from '../../../auth/common/interfaces/res/user.res.interface';
+import { ViewableImage } from '../../../common/components/utils/ViewableImage';
 import { emptyAvatarUrl } from '../../../common/constants/index.constant';
 import { useAuth } from '../../../common/hooks/use-auth';
 import { useIsInViewport } from '../../../common/hooks/use-is-in-viewport';
@@ -114,7 +115,7 @@ export const MessageBoxMessageLineImage = ({
               date={createdAt}
               tooltipProps={{ placement: isMyMsg ? 'left' : 'right' }}
             >
-              <Box component="img" src={message.file.url} maxWidth="190px" />
+              <ViewableImage component="img" src={message.file.url} maxWidth="190px" />
             </MessageBoxMessageLineTimeTooltip>
           </Stack>
         </Stack>

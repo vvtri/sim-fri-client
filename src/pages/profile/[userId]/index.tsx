@@ -26,7 +26,6 @@ import { useViewingProfile } from '../../../profile/common/hooks/use-viewing-pro
 import { ProfileListPost } from '../../../profile/detail/components/ProfileListPosts';
 import { UserProfileFriendCard } from '../../../profile/detail/components/UserProfileFriendCard';
 import { UserProfileIntroCard } from '../../../profile/detail/components/UserProfileIntroCard';
-import { UserProfilePhotoCard } from '../../../profile/detail/components/UserProfilePhotoCard';
 import { useAppDispatch, useAppSelector } from '../../../redux/hook';
 import {
   setViewPostData,
@@ -117,7 +116,7 @@ export default function Profile({}: ProfileProps) {
       <Stack direction="row" spacing="14px" mt="14px" paddingBottom="40px">
         <Stack direction="column" width="30%" spacing="14px" flexShrink="0">
           <UserProfileIntroCard />
-          <UserProfilePhotoCard />
+          {/* <UserProfilePhotoCard /> */}
           <UserProfileFriendCard />
         </Stack>
 

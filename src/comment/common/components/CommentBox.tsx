@@ -3,6 +3,7 @@ import { Avatar, Box, Stack, Typography } from '@mui/material';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { CommentReactionType } from 'shared';
+import { ViewableImage } from '../../../common/components/utils/ViewableImage';
 import { emptyAvatarUrl } from '../../../common/constants/index.constant';
 import { genDisplayDateByTimeDiff } from '../../../common/utils/index.util';
 import { PostReactionPopover } from '../../../post/common/components/PostReactionPopover';
@@ -243,7 +244,7 @@ export const CommentBox = ({
                   width="fit-content"
                   maxWidth="100%"
                 >
-                  <Box
+                  <ViewableImage
                     component="img"
                     src={item.file.url}
                     sx={{

@@ -22,6 +22,7 @@ import { useInfiniteFriend } from '../../../friend/common/hooks/use-infinite-fri
 import { getUserInfoFromFriend } from '../../../friend/common/utils/friend.util';
 import { ProfileTabs } from '../../common/enums/profile.enum';
 import { UserProfileTitleAction } from './UserProfileTitleAction';
+import { ViewableNextImage } from '../../../common/components/utils/ViewableNextImage';
 
 export const UserProfileTitle = () => {
   const queryClient = useQueryClient();
@@ -78,7 +79,7 @@ export const UserProfileTitle = () => {
       <Stack direction="row" padding="16px" justifyContent="space-between">
         <Stack direction="row">
           <Box mr="16px" position="relative">
-            <Image
+            <ViewableNextImage
               src={userProfileAvtUrl}
               width={168}
               height={168}

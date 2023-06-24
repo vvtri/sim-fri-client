@@ -34,6 +34,7 @@ export const RegisterForm = () => {
 
   const methods = useForm<IRegisterForm>({
     resolver: yupResolver(registerSchema),
+    defaultValues: { email: '', password: '', rePassword: '' },
   });
   const { register, control, formState, handleSubmit, setError, getValues } =
     methods;

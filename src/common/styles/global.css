@@ -12,3 +12,16 @@ body {
 ::selection {
   background: #0a55ae;
 }
+
+@keyframes createBox {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.react-simple-image-viewer__close {
+  opacity: 1 !important;
+}

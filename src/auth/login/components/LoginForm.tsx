@@ -41,6 +41,7 @@ export const LoginForm = () => {
 
   const methods = useForm<ILoginForm>({
     resolver: yupResolver(loginSchema),
+    defaultValues: { email: '', password: '' },
   });
   const { register, control, formState, handleSubmit, setError, getValues } =
     methods;

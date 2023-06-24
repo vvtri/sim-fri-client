@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { RootState } from '../store';
 
 interface CommonState {
   viewImageUrl?: string;
@@ -20,7 +21,7 @@ const commonSlice = createSlice({
 });
 
 export const { setViewImageUrl } = commonSlice.actions;
-// export const friendActiveTabSelector = (state: RootState) =>
-//   state.friend.activeFriendTab;
+export const viewImageUrlSelector = (state: RootState) =>
+  state.common.viewImageUrl;
 
 export default commonSlice.reducer;
