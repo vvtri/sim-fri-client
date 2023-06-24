@@ -40,9 +40,11 @@ export const UserProfileFriendCard = () => {
           color: '#B0B3B8',
         }}
         action={
-          <Button sx={{ textTransform: 'none', fontSize: '1rem' }}>
-            See all friends
-          </Button>
+          <Link href={`/profile/${userId}/friends`}>
+            <Button sx={{ textTransform: 'none', fontSize: '1rem' }}>
+              See all friends
+            </Button>
+          </Link>
         }
       />
       <CardContent>

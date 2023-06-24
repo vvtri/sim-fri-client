@@ -1,17 +1,21 @@
+import { useRouter } from 'next/router';
 import { ReactElement, useEffect } from 'react';
 import ProfileLayout from '../../../common/layouts/ProfileLayout';
-import { ProfileTabs } from '../../../profile/common/enums/profile.enum';
 import { useAppDispatch } from '../../../redux/hook';
-import { setProfileTabValue } from '../../../redux/slices/profile.slice';
 
 export default function About() {
   const dispatch = useAppDispatch();
+  const router = useRouter();
 
   useEffect(() => {
-    dispatch(setProfileTabValue(ProfileTabs.ABOUT));
+    router.push('/404');
   }, []);
 
-  return <div>About</div>;
+  // useEffect(() => {
+  //   dispatch(setProfileTabValue(ProfileTabs.ABOUT));
+  // }, []);
+
+  return <></>;
 }
 
 About.getLayout = (page: ReactElement) => {

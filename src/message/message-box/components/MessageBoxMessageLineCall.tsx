@@ -15,6 +15,7 @@ import { IMessageUserInfo } from '../../common/models/message-user-info.model';
 import { IMessage } from '../../common/models/message.model';
 import { openCallWindow } from '../../common/utils/message.util';
 import { MessageBoxMessageLineActionIcon } from './MessageBoxMessageLineActionIcons';
+import { MessageBoxMessageLineTimeTooltip } from './MessageBoxMessageLineTimeTooltip';
 
 type MessageBoxMessageCallProps = {
   message: IMessage;
@@ -106,47 +107,52 @@ export const MessageBoxMessageCall = ({
               </Typography>
             )}
 
-            <Stack
-              bgcolor="comment.main"
-              direction="row"
-              alignItems="center"
-              justifyContent="space-evenly"
-              overflow="hidden"
-              paddingY="10px"
-              paddingX="20px"
-              borderRadius="20px"
-              spacing="10px"
-              sx={{
-                '&:hover': { bgcolor: 'hoverColor.main' },
-                cursor: 'pointer',
-              }}
-              onClick={handleClick}
+            <MessageBoxMessageLineTimeTooltip
+              date={message.createdAt}
+              tooltipProps={{ placement: isMyMsg ? 'left' : 'right' }}
             >
-              <Center
+              <Stack
+                bgcolor="comment.main"
+                direction="row"
+                alignItems="center"
+                justifyContent="space-evenly"
+                overflow="hidden"
+                paddingY="10px"
+                paddingX="20px"
+                borderRadius="20px"
+                spacing="10px"
                 sx={{
-                  width: '36px',
-                  height: '36px',
-                  borderRadius: '50%',
-                  bgcolor: 'secondary.main',
+                  '&:hover': { bgcolor: 'hoverColor.main' },
+                  cursor: 'pointer',
                 }}
+                onClick={handleClick}
               >
-                <Call
+                <Center
                   sx={{
-                    color: 'white',
-                    width: '20px',
-                    height: '20px',
+                    width: '36px',
+                    height: '36px',
                     borderRadius: '50%',
+                    bgcolor: 'secondary.main',
                   }}
-                />
-              </Center>
+                >
+                  <Call
+                    sx={{
+                      color: 'white',
+                      width: '20px',
+                      height: '20px',
+                      borderRadius: '50%',
+                    }}
+                  />
+                </Center>
 
-              <Stack>
-                <Typography fontSize="0.9375rem" fontWeight="600">
-                  {isGroup ? 'Group call' : 'Video call'}
-                </Typography>
-                <Typography fontSize="0.8125rem">Tap to join</Typography>
+                <Stack>
+                  <Typography fontSize="0.9375rem" fontWeight="600">
+                    {isGroup ? 'Group call' : 'Video call'}
+                  </Typography>
+                  <Typography fontSize="0.8125rem">Tap to join</Typography>
+                </Stack>
               </Stack>
-            </Stack>
+            </MessageBoxMessageLineTimeTooltip>
           </Stack>
         </Stack>
 

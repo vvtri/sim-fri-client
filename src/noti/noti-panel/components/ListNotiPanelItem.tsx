@@ -83,6 +83,30 @@ const getNotiIcon = (noti: INoti) => {
     case NotiType.COMMENT_REACTION:
     case NotiType.POST_REACTION:
       return mapNotiReaction(noti.reactionType);
+    case NotiType.NEW_FRIEND_REQUEST:
+      return (
+        <Box
+          component="img"
+          src={IMAGE_PATHS.FRIEND_ICON}
+          sx={{
+            width: '28px',
+            height: '28px',
+            borderRadius: '50%',
+          }}
+        />
+      );
+    case NotiType.FRIEND_REQUEST_ACCEPTED:
+      return (
+        <Box
+          component="img"
+          src={IMAGE_PATHS.FRIEND_ICON}
+          sx={{
+            width: '28px',
+            height: '28px',
+            borderRadius: '50%',
+          }}
+        />
+      );
     default:
       throw new Error(`Noti type ${noti.type} not implemented`);
   }

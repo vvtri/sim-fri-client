@@ -68,13 +68,14 @@ export const SearchPeopleItem = ({ user }: SearchPeopleItemProps) => {
         justifyContent="space-between"
         bgcolor="darkAccent.main"
         borderRadius="10px"
+        minWidth='0'
       >
-        <Stack direction="row" spacing="10px">
+        <Stack direction="row" spacing="10px" flexGrow='1' minWidth='0'>
           <Link href={`/profile/${user.id}`}>
             <Avatar src={avtUrl} sx={{ width: '60px', height: '60px' }} />
           </Link>
 
-          <Stack>
+          <Stack minWidth='0'>
             <Link href={`/profile/${user.id}`} style={{ width: 'fit-content' }}>
               <Typography
                 fontWeight="600"
@@ -109,7 +110,7 @@ export const SearchPeopleItem = ({ user }: SearchPeopleItemProps) => {
           </Stack>
         </Stack>
 
-        <Center>
+        <Center flexShrink='0' ml='10px'>
           <Button
             color="secondaryBlue"
             variant="contained"

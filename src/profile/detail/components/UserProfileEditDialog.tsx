@@ -106,8 +106,10 @@ export const UserProfileEditDialog = () => {
       value.avatarId = file.id;
     }
 
-    mutate(value);
+    mutate(value as any);
   };
+
+  console.log('errors', errors);
 
   return (
     <Box>

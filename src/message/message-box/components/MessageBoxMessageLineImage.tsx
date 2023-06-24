@@ -18,6 +18,7 @@ import { IConversationMember } from '../../common/models/conversation-member.mod
 import { IMessageUserInfo } from '../../common/models/message-user-info.model';
 import { IMessage } from '../../common/models/message.model';
 import { MessageBoxMessageLineActionIcon } from './MessageBoxMessageLineActionIcons';
+import { MessageBoxMessageLineTimeTooltip } from './MessageBoxMessageLineTimeTooltip';
 
 type MessageBoxMessageImageLineProps = {
   message: IMessage;
@@ -109,7 +110,12 @@ export const MessageBoxMessageLineImage = ({
               </Typography>
             )}
 
-            <Box component="img" src={message.file.url} maxWidth="190px" />
+            <MessageBoxMessageLineTimeTooltip
+              date={createdAt}
+              tooltipProps={{ placement: isMyMsg ? 'left' : 'right' }}
+            >
+              <Box component="img" src={message.file.url} maxWidth="190px" />
+            </MessageBoxMessageLineTimeTooltip>
           </Stack>
         </Stack>
 

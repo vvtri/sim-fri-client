@@ -96,7 +96,7 @@ export const MessageBoxAction = ({
   };
 
   const handleInputEnter: KeyboardEventHandler<HTMLTextAreaElement> = (e) => {
-    if (e.key === 'Enter') {
+    if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       handleSendMessage();
     }

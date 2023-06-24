@@ -24,6 +24,7 @@ export const EmojiPicker = forwardRef<HTMLDivElement, EmojiPickerProps>(
     return (
       <Box
         fontSize="0.875rem"
+        ref={ref}
         sx={{
           '.EmojiPickerReact *': { fontFamily: `${fontFamily}!important` },
           '.EmojiPickerReact': {

@@ -83,7 +83,6 @@ export default function SavePostForm({
 
   const handleClickEmoji = (emoji: EmojiClickData, e: MouseEvent) => {
     setValue('content', getValues('content') + emoji.emoji);
-    setIsShowEmojiPickerPanel(false);
   };
 
   const pasteHandler = (e: ClipboardEvent<HTMLInputElement>) => {

@@ -58,7 +58,7 @@ export const SaveCommentFormAction = ({
   useEffect(() => {
     const handler = (e: MouseEvent) => {
       const target = e.target as any;
-     
+
       if (emojiIconRef.current?.contains(target)) {
         return setIsShowEmoji((old) => !old);
       }
@@ -74,7 +74,9 @@ export const SaveCommentFormAction = ({
   }, []);
 
   useEffect(() => {
-    if (emojiIconRef.current) setEmojiIconEle(emojiIconRef.current);
+    if (emojiIconRef.current) {
+      setEmojiIconEle(emojiIconRef.current);
+    }
   }, [emojiIconRef.current]);
 
   return (
@@ -100,7 +102,7 @@ export const SaveCommentFormAction = ({
         open={!!emojiIconEle}
         sx={{ zIndex: '1400' }}
         anchorEl={emojiIconEle}
-        placement="top-start"
+        placement="top-end"
         modifiers={[
           {
             name: 'offset',
@@ -114,10 +116,7 @@ export const SaveCommentFormAction = ({
           ref={emojiPickerRef}
           emojiProps={{ onEmojiClick: handleClickEmoji }}
           boxProps={{
-            sx: {
-              display: isShowEmoji ? 'block' : 'none',
-              transform: 'translateX(-100%)',
-            },
+            sx: { display: isShowEmoji ? 'block' : 'none' },
           }}
         />
       </Popper>

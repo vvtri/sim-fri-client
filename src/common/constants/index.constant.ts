@@ -46,8 +46,11 @@ export const IMAGE_PATHS = {
   LIKE_ICON: '/images/like-icon.svg',
   LOVE_ICON: '/images/love-icon.svg',
   ANGRY_ICON: '/images/angry-icon.svg',
+  FRIEND_ICON: '/images/friend-accepted-icon-removebg-preview.png',
 };
 
 export const dotCharacter = '&#183;';
 
 export const fontFamily = 'Helvetica, Noto Color Emoji, Arial, sans-serif';
+
+export const properOverflowClass = 'popper-overflow';

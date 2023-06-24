@@ -31,8 +31,6 @@ export const FriendCard = ({ friend: parentFriend, user }: FriendCardProps) => {
   let mutualFriends: IUser[] =
     user.mutualFriends || friend?.mutualFriends || [];
   const avtUrl = user.profile.avatar?.url || emptyAvatarUrl;
-  console.log('friend', friend);
-  console.log('user', user);
   const { mutate: addFriend, isLoading: isAddingFriend } = useAddFriend({
     onSuccess(data, variables, context) {
       setFriend(data);
@@ -73,8 +71,6 @@ export const FriendCard = ({ friend: parentFriend, user }: FriendCardProps) => {
   const handleDeleteFriend = () => {
     deleteFriend(user.id);
   };
-
-  console.log('friendType', friendType);
 
   return (
     <Box
@@ -149,9 +145,11 @@ export const FriendCard = ({ friend: parentFriend, user }: FriendCardProps) => {
           )}
 
           {friendType === FriendType.BE_FRIEND && (
-            <Button color="primary" variant="contained" fullWidth>
-              <Link href={`/profile/${user.id}`}>View Profile</Link>
-            </Button>
+            <Link href={`/profile/${user.id}`}>
+              <Button color="primary" variant="contained" fullWidth>
+                View Profile
+              </Button>
+            </Link>
           )}
 
           {friendType === FriendType.REQUESTING && (

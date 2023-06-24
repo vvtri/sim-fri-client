@@ -8,12 +8,7 @@ import {
   Stack,
 } from '@mui/material';
 import { EmojiClickData } from 'emoji-picker-react';
-import {
-  ChangeEventHandler,
-  KeyboardEventHandler,
-  useRef,
-  useState,
-} from 'react';
+import { ChangeEventHandler, KeyboardEventHandler, useState } from 'react';
 import { MultilineInput } from '../../../common/components/utils/MultilineInput';
 import { addSnackBar } from '../../../common/utils/snackbar.util';
 import { IComment } from '../models/comment.model';
@@ -45,7 +40,6 @@ export const SaveCommentForm = ({
     })) || [],
   );
   const [isActive, setIsActive] = useState(!!parentIsActive);
-  const inputRef1 = useRef<HTMLInputElement | null>(null);
 
   const handleUploadImage: ChangeEventHandler<HTMLInputElement> = (e) => {
     const newFile = e.target.files?.[0];

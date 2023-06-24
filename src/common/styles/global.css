@@ -3,3 +3,12 @@
 body {
   font-family: 'Helvetica', 'Noto Color Emoji', 'Arial', 'sans-serif';
 }
+
+.popper-overflow[data-popper-escaped] {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+::selection {
+  background: #0a55ae;
+}

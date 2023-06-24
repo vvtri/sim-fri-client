@@ -18,6 +18,7 @@ import { IConversationMember } from '../../common/models/conversation-member.mod
 import { IMessageUserInfo } from '../../common/models/message-user-info.model';
 import { IMessage } from '../../common/models/message.model';
 import { MessageBoxMessageLineActionIcon } from './MessageBoxMessageLineActionIcons';
+import { MessageBoxMessageLineTimeTooltip } from './MessageBoxMessageLineTimeTooltip';
 
 type MessageBoxMessageLineTextProps = {
   message: IMessage;
@@ -111,19 +112,14 @@ export const MessageBoxMessageLineText = ({
               padding="8px 12px"
               maxWidth="190px"
             >
-              <Tooltip
-                title={`Sent at  ${dayjs(createdAt).format(
-                  'DD/MM/YYYY HH:mm',
-                )}`}
-                placement={isMyMsg ? 'left' : 'right'}
-                PopperProps={{
-                  popperOptions: {
-                    modifiers: [{ name: 'preventOverflow', enabled: true }],
-                  },
-                }}
+              <MessageBoxMessageLineTimeTooltip
+                date={createdAt}
+                tooltipProps={{ placement: isMyMsg ? 'left' : 'right' }}
               >
-                <Typography fontSize="0.9375rem">{content}</Typography>
-              </Tooltip>
+                <Typography fontSize="0.9375rem" whiteSpace="pre-wrap">
+                  {content}
+                </Typography>
+              </MessageBoxMessageLineTimeTooltip>
             </Box>
           </Stack>
         </Stack>

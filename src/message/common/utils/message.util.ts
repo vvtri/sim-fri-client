@@ -7,3 +7,5 @@ export function openCallWindow(url: string) {
 
   window.open(url, '_blank', strWindowFeatures);
 }
+
+export function genTooltipText() {}

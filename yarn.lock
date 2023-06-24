@@ -3150,7 +3150,7 @@ shallow-equal@^3.1.0:
 
 "shared@git+https://github.com/vvtri/sim-fri-shared.git#develop":
   version "1.0.0"
-  resolved "git+https://github.com/vvtri/sim-fri-shared.git#635c676c9bbd8ae3257a2d3ebb62de2fa72a1d2b"
+  resolved "git+https://github.com/vvtri/sim-fri-shared.git#f038a66f32c65abe57533a70e04140474965cf4d"
 
 shebang-command@^2.0.0:
   version "2.0.0"
