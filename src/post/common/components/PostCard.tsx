@@ -343,7 +343,12 @@ export const PostCard = ({
         </Box>
       </Stack>
 
-      <Box fontSize="0.9375rem" color="primaryText.main" whiteSpace="pre-wrap">
+      <Box
+        fontSize="0.9375rem"
+        color="primaryText.main"
+        whiteSpace="pre-wrap"
+        sx={{ wordWrap: 'break-word' }}
+      >
         {content}
       </Box>
 

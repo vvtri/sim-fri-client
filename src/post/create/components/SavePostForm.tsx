@@ -132,7 +132,7 @@ export default function SavePostForm({
             </Typography>
             <Select
               variant="standard"
-              defaultValue={AudienceType.PUBLIC}
+              defaultValue={data.audienceType || AudienceType.PUBLIC}
               sx={{
                 color: 'white',
                 fontSize: '0.85rem',

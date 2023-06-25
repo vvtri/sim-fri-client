@@ -105,7 +105,12 @@ export const CommentBoxContent = ({
           </Typography>
         </Link>
 
-        <Typography fontSize="0.9375rem" fontWeight="400" whiteSpace="pre-wrap">
+        <Typography
+          fontSize="0.9375rem"
+          fontWeight="400"
+          whiteSpace="pre-wrap"
+          sx={{ wordWrap: 'break-word' }}
+        >
           {content}
         </Typography>
 

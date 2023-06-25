@@ -134,6 +134,7 @@ export const ListConversationItem = ({
                 whiteSpace="nowrap"
                 overflow="hidden"
                 width="fit-content"
+                noWrap
               >
                 {msgContent} &#183;
               </Typography>
