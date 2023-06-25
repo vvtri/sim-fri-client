@@ -80,11 +80,11 @@ export const Header = () => {
     dispatch(setViewImageUrl(undefined));
   };
 
-  let unreadConversation = 0;
-  if (conversationData && conversationData.pages.length < 1)
-    return unreadConversation;
+  const conversations =
+    conversationData?.pages.flatMap((page) => page.items) || [];
 
-  conversationData?.pages[0].items.forEach((item) => {
+  let unreadConversation = 0;
+  conversations.forEach((item) => {
     if (item.latestMessage?.user?.id === userProfile?.user.id) return;
     const isExisted = item.latestMessage?.messageUserInfos?.find(
       (item) => item.user.id === userProfile?.user.id,
@@ -94,8 +94,6 @@ export const Header = () => {
     unreadConversation += 1;
   });
 
-  const conversations =
-    conversationData?.pages.flatMap((page) => page.items) || [];
   const noties = notiData?.pages.flatMap((page) => page.items) || [];
 
   let unreadNoti = 0;
