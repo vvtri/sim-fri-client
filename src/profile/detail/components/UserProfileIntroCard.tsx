@@ -46,7 +46,7 @@ export const UserProfileIntroCard = ({}: UserProfileIntroCardProps) => {
               <Stack direction="row" spacing="6px" width="100%">
                 <Typography flexShrink="0">Works at</Typography>
                 <Typography
-                  flexGrow="1"  
+                  flexGrow="1"
                   sx={{ textDecoration: 'underline' }}
                   color="white"
                   textAlign="right"
@@ -107,14 +107,8 @@ export const UserProfileIntroCard = ({}: UserProfileIntroCardProps) => {
           ) : (
             <Stack direction="row" spacing="6px">
               <HomeIcon />
-              <Stack
-                alignItems="center"
-                direction="row"
-                textTransform="capitalize"
-                spacing="6px"
-              >
-                <Typography>No address to show</Typography>
-              </Stack>
+
+              <Typography>No address to show</Typography>
             </Stack>
           )}
 
@@ -152,14 +146,7 @@ export const UserProfileIntroCard = ({}: UserProfileIntroCardProps) => {
           ) : (
             <Stack direction="row" spacing="6px">
               <PlaceIcon />
-              <Stack
-                alignItems="center"
-                direction="row"
-                textTransform="capitalize"
-                spacing="6px"
-              >
-                <Typography>No hometown to show</Typography>
-              </Stack>
+              <Typography>No hometown to show</Typography>
             </Stack>
           )}
 
@@ -196,14 +183,7 @@ export const UserProfileIntroCard = ({}: UserProfileIntroCardProps) => {
           ) : (
             <Stack direction="row" spacing="6px">
               <SchoolIcon />
-              <Stack
-                alignItems="center"
-                direction="row"
-                textTransform="capitalize"
-                spacing="6px"
-              >
-                <Typography>No school to show</Typography>
-              </Stack>
+              <Typography>No school to show</Typography>
             </Stack>
           )}
         </Stack>
