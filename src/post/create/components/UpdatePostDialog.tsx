@@ -39,7 +39,7 @@ export default function UpdatePostDialog({
       addSnackBar({ variant: 'success', message: 'Post updated' });
       afterUpdatePost(data);
       dispatch(setUpdatePost({ isShow: false }));
-      dispatch(setViewPostData(data))
+      dispatch(setViewPostData(data));
     },
     onError(error, variables, context) {
       addSnackBar({ variant: 'error', message: 'Update post failed' });
@@ -102,7 +102,7 @@ export default function UpdatePostDialog({
           backgroundColor: 'darkAccent.main',
           color: 'white',
           width: '100%',
-          maxWidth: '500px',
+          maxWidth: '700px',
         },
       }}
     >
