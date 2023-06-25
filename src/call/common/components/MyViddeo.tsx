@@ -86,6 +86,7 @@ export const MyVideo = forwardRef<HTMLVideoElement | null, MyVideoProps>(
             height="100%"
             autoPlay
             ref={ref}
+            muted
           />
         </Box>
       </Stack>
@@ -93,4 +94,4 @@ export const MyVideo = forwardRef<HTMLVideoElement | null, MyVideoProps>(
   },
 );
 
-MyVideo.displayName = 'MyVideo'
+MyVideo.displayName = 'MyVideo';
