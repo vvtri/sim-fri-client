@@ -1,4 +1,4 @@
-import { Box, Stack } from '@mui/material';
+import { Box, Stack, Typography } from '@mui/material';
 import { useQueryClient } from '@tanstack/react-query';
 import { useEffect, useRef } from 'react';
 import { PostReactionType } from 'shared';
@@ -8,6 +8,7 @@ import {
 } from '../../../comment/common/interfaces/res/comment.res.interface';
 import { ICommentReaction } from '../../../comment/common/models/comment-reaction.model';
 import { IComment } from '../../../comment/common/models/comment.model';
+import { Center } from '../../../common/components/utils/Center';
 import { PostCard } from '../../../post/common/components/PostCard';
 import { ViewPostDialog } from '../../../post/common/components/ViewDetailDialog';
 import { useInfinitePost } from '../../../post/common/hooks/use-infinite-post';
@@ -32,6 +33,7 @@ export const HomePostContainer = () => {
   const queryKey = {};
   const {
     data,
+    hasNextPage,
     isFetching,
     isFetchingNextPage,
     fetchNextPage,
@@ -148,6 +150,12 @@ export const HomePostContainer = () => {
           />
         ))}
       </Stack>
+
+      {!hasNextPage && (
+        <Center py="20px">
+          <Typography textAlign="center">No more post</Typography>
+        </Center>
+      )}
     </Box>
   );
 };

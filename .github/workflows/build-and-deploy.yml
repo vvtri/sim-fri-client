@@ -34,7 +34,7 @@ jobs:
         run: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
 
       - name: Build image
-        run: docker build . -t $IMAGE_NAME --build-arg NEXT_PUBLIC_CALL_SOCKET=ws://167.172.5.183/call --build-arg NEXT_PUBLIC_CHAT_SOCKET=ws://167.172.5.183/chat --build-arg NEXT_PUBLIC_BASE_URL=http://167.172.5.183/api --build-arg NEXT_PUBLIC_HOST=http://167.172.5.183
+        run: docker build . -t $IMAGE_NAME --build-arg NEXT_PUBLIC_CALL_SOCKET=wss://sim-fri.online/call --build-arg NEXT_PUBLIC_CHAT_SOCKET=wss://sim-fri.online/chat --build-arg NEXT_PUBLIC_BASE_URL=https://sim-fri.online/api --build-arg NEXT_PUBLIC_HOST=https://sim-fri.online
 
       - name: Push to Docker hub
         run: docker push $IMAGE_NAME
