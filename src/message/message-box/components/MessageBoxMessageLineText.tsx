@@ -116,7 +116,11 @@ export const MessageBoxMessageLineText = ({
                 date={createdAt}
                 tooltipProps={{ placement: isMyMsg ? 'left' : 'right' }}
               >
-                <Typography fontSize="0.9375rem" whiteSpace="pre-wrap">
+                <Typography
+                  fontSize="0.9375rem"
+                  whiteSpace="pre-wrap"
+                  sx={{ wordWrap: 'break-word' }}
+                >
                   {content}
                 </Typography>
               </MessageBoxMessageLineTimeTooltip>
