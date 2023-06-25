@@ -30,6 +30,7 @@ import {
   addConversationMessageBox,
   conversationListPanelSelector,
 } from '../../redux/slices/message.slice';
+import { setViewPost } from '../../redux/slices/post.slice';
 import { searchTextSelector } from '../../redux/slices/search.slice';
 import {
   AUDIO_PATH,
@@ -73,6 +74,7 @@ export const Header = () => {
     limit: 20,
   });
   const imageUrl = useAppSelector(viewImageUrlSelector);
+  const curRoute = useRouter().asPath;
 
   const closeImage = () => {
     dispatch(setViewImageUrl(undefined));
@@ -115,6 +117,10 @@ export const Header = () => {
   useEffect(() => {
     setSearchText(searchTextState);
   }, [searchTextState]);
+
+  useEffect(() => {
+    dispatch(setViewPost({ isShow: false }));
+  }, [curRoute]);
 
   useEffect(() => {
     if (!chatSocket) return;

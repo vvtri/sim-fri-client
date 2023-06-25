@@ -26,6 +26,8 @@ export const CreateCommentBox = ({
   const { mutateAsync, isLoading } = useCreateComment();
 
   const handleCreateComment = async (data: SaveCommentParams) => {
+    if (!data.content) return;
+
     if (isCreatingComment) return;
     setIsCreatingComment(true);
 

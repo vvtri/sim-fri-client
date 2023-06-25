@@ -5,6 +5,7 @@ import { useViewingProfile } from '../../profile/common/hooks/use-viewing-profil
 import { UserProfileEditDialog } from '../../profile/detail/components/UserProfileEditDialog';
 import { UserProfileHeadSection } from '../../profile/detail/components/UserProfileHeadSection';
 import { useAppDispatch, useAppSelector } from '../../redux/hook';
+import { setViewPostIsShow } from '../../redux/slices/post.slice';
 import {
   setViewingProfileUserId,
   viewingProfileUserIdSelector,
@@ -31,6 +32,8 @@ export default function ProfileLayout({ children }: ProfileLayoutProps) {
       dispatch(setViewingProfileUserId(Number(router.query.userId)));
     }
   }, [router.query.userId]);
+
+ 
 
   return (
     <AuthGuard>
