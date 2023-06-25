@@ -1,5 +1,5 @@
 import axiosClient from '../../../common/configs/axios.config';
-import { getMyProfileUrl, updateProfileUrl } from '../apis/index.api';
+import { getUserProfileUrl, updateProfileUrl } from '../apis/index.api';
 import { IUpdateUserProfileReq } from '../interfaces/req/user-profile.req.interface';
 import {
   IGetUserProfileRes,
@@ -7,11 +7,11 @@ import {
 } from '../interfaces/res/user-profile.res.interface';
 
 export const getMyProfile = async () => {
-  return axiosClient.get<any, IGetUserProfileRes>(getMyProfileUrl);
+  return axiosClient.get<any, IGetUserProfileRes>(getUserProfileUrl);
 };
 
 export const getUserProfile = async (id: number) => {
-  return axiosClient.get<any, IGetUserProfileRes>(`${getMyProfileUrl}/${id}`);
+  return axiosClient.get<any, IGetUserProfileRes>(`${getUserProfileUrl}/${id}`);
 };
 
 export const updateProfile = async (data: IUpdateUserProfileReq) => {

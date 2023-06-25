@@ -12,7 +12,6 @@ import {
   CARD_BOX_SHADOW,
   headerHeight,
 } from '../../../common/constants/index.constant';
-import { useAppDispatch } from '../../../redux/hook';
 import { useInfinitePeople } from '../../../search/common/hooks/use-infinite-people.hook';
 import { MessageBoxAction } from '../../message-box/components/MessageBoxAction';
 import { CreateConversationBoxHeader } from './CreateConversationBoxHeader';

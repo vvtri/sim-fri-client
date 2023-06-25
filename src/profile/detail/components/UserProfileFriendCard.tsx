@@ -52,7 +52,7 @@ export const UserProfileFriendCard = () => {
           {friends.map((item) => {
             const friend = getUserInfoFromFriend(item, userId as any);
             return (
-              <Box width="100%" key={item.id}>
+              <Box width="100%" minWidth="0" key={item.id}>
                 <Link href={`/profile/${friend.id}`}>
                   <Box
                     position="relative"
@@ -67,6 +67,7 @@ export const UserProfileFriendCard = () => {
                     fontWeight="600"
                     fontSize="0.8125rem"
                     color="secondaryText.main"
+                    noWrap
                   >
                     {friend.profile.name}
                   </Typography>

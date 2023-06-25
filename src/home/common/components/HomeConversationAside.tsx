@@ -70,12 +70,6 @@ export const HomeConversationAside = () => {
       </Typography>
 
       <Stack mt="10px">
-        {isFetchingGroupConversation && (
-          <Center width="100%" py="30px">
-            <CircularProgress />
-          </Center>
-        )}
-
         {groupConversations?.items.map((item) => (
           <HomeConversationItem
             key={item.id}
@@ -90,6 +84,12 @@ export const HomeConversationAside = () => {
             }}
           />
         ))}
+
+        {isFetchingGroupConversation && (
+          <Center width="100%" py="30px">
+            <CircularProgress />
+          </Center>
+        )}
       </Stack>
     </Box>
   );

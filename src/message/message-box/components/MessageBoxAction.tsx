@@ -21,7 +21,10 @@ import { MultilineInput } from '../../../common/components/utils/MultilineInput'
 import { uploadFileBuffer } from '../../../file/common/utils/upload-file.util';
 import { IUserProfile } from '../../../profile/common/models/user-profile.model';
 import { useAppDispatch } from '../../../redux/hook';
-import { addConversationThunk } from '../../../redux/slices/message.slice';
+import {
+  addConversationThunk,
+  removeCreateConversation,
+} from '../../../redux/slices/message.slice';
 import { useSendMessage } from '../../common/hooks/use-send-message';
 import { IConversation } from '../../common/models/conversation.model';
 
@@ -52,7 +55,8 @@ export const MessageBoxAction = ({
   const [isShowEmoji, setIsShowEmoji] = useState(false);
   const { mutate, isLoading: isSendingMsg } = useSendMessage({
     onSuccess(data, variables, context) {
-      if (isNewConversation || isCreateConversation)
+      if (isNewConversation || isCreateConversation) {
+        dispatch(removeCreateConversation());
         dispatch(
           addConversationThunk({
             userId: userProfile?.user?.id,
@@ -60,6 +64,7 @@ export const MessageBoxAction = ({
             shouldCloseCreate: true,
           }),
         );
+      }
     },
     onError(error, variables, context) {
       console.log('error', error);

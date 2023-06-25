@@ -99,7 +99,7 @@ export const CommentBoxContent = ({
         ref={contentRef}
         minWidth="0"
       >
-        <Link href="/">
+        <Link href={`/profile/${user.id}`}>
           <Typography fontSize="0.8125rem" fontWeight="600">
             {user.profile.name}
           </Typography>

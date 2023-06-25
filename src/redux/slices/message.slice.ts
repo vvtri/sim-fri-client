@@ -165,7 +165,9 @@ const messageSlice = createSlice({
       if (conversation.isGroup) {
         openConversations = state.messageBox.openConversations.filter(
           (item) => {
-            if (item.isCreateConversation) return false;
+            if (item.isCreateConversation) return !shouldCloseCreate;
+
+            if (item.conversation?.id === conversation.id) return false;
             return true;
           },
         );
@@ -173,7 +175,7 @@ const messageSlice = createSlice({
         openConversations = state.messageBox.openConversations.filter(
           (item) => {
             if (item.isCreateConversation) return !shouldCloseCreate;
-            if (!item.isNewConversation) return true;
+            if (item.isNewConversation) return true;
 
             if (item.userProfile?.user.id === userId) return false;
             else return true;

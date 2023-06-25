@@ -38,6 +38,7 @@ export default function RHFDateField({
             '& .MuiFormLabel-root': {
               color: error ? 'error.main' : 'rgba(0, 0, 0, 0.6)',
             },
+            ':selection': { background: 'unset' },
           }}
         />
       )}

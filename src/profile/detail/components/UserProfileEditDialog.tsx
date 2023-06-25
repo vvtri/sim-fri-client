@@ -71,11 +71,7 @@ export const UserProfileEditDialog = () => {
       const profile = await getMyProfile();
       dispatch(setAuth({ isLoading: false, userProfile: profile }));
       dispatch(setEditProfile({ avatarUrl: undefined, isShowModal: false }));
-      queryClient.invalidateQueries({
-        predicate: (query) => {
-          return query.queryKey.includes(QUERY_KEYS.VIEWING_PROFILE);
-        },
-      });
+      queryClient.invalidateQueries([QUERY_KEYS.VIEWING_PROFILE, user.id]);
     },
     onError(error, variables, context) {
       addSnackBar({ variant: 'error', message: 'Update profile failed' });

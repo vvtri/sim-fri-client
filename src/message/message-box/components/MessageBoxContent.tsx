@@ -96,7 +96,10 @@ function handleMapMessages(
 
     result.push(component);
 
+    let isHaveDate = false;
+
     if (lastDate && !lastDate.isSame(message.createdAt, 'date')) {
+      isHaveDate = true;
       const formatContent = dayjs(message.createdAt).format(
         'DD MMM YYYY, HH:mm',
       );
@@ -112,7 +115,7 @@ function handleMapMessages(
 
     lastDate = dayjs(message.createdAt);
 
-    if (isLatestMsg && lastDate) {
+    if (isLatestMsg && lastDate && !isHaveDate) {
       lastDate = dayjs(message.createdAt);
       const formatContent = dayjs(message.createdAt).format(
         'DD MMM YYYY, HH:mm',
