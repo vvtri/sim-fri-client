@@ -115,7 +115,13 @@ export const ListConversationItem = ({
       onClick={handleClick}
       borderRadius="10px"
     >
-      <Stack direction="row" alignItems="center" spacing="10px" width="100%">
+      <Stack
+        direction="row"
+        alignItems="center"
+        spacing="10px"
+        width="100%"
+        minWidth="0"
+      >
         <Avatar src={avtUrl} />
 
         <Stack flexGrow="1" minWidth="0">
@@ -157,6 +163,7 @@ export const ListConversationItem = ({
           bgcolor="primary.main"
           width="12px"
           height="12px"
+          flexShrink="0"
         />
       )}
     </Stack>

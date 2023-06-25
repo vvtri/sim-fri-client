@@ -7,7 +7,7 @@ import { InfiniteData, useQueryClient } from '@tanstack/react-query';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { FormEventHandler, useEffect, useMemo, useRef, useState } from 'react';
+import { FormEventHandler, useEffect, useRef, useState } from 'react';
 import ReactSimpleImageViewer from 'react-simple-image-viewer';
 import { shallowEqualArrays } from 'shallow-equal';
 import { WS_MESSAGE_EVENT } from 'shared';
@@ -80,22 +80,19 @@ export const Header = () => {
     dispatch(setViewImageUrl(undefined));
   };
 
-  let unreadConversation = useMemo(() => {
-    let temp = 0;
-    if (conversationData && conversationData.pages.length < 1) return temp;
+  let unreadConversation = 0;
+  if (conversationData && conversationData.pages.length < 1)
+    return unreadConversation;
 
-    conversationData?.pages[0].items.forEach((item) => {
-      if (item.latestMessage?.user?.id === userProfile?.user.id) return;
-      const isExisted = item.latestMessage?.messageUserInfos?.find(
-        (item) => item.user.id === userProfile?.user.id,
-      );
-      if (isExisted) return;
+  conversationData?.pages[0].items.forEach((item) => {
+    if (item.latestMessage?.user?.id === userProfile?.user.id) return;
+    const isExisted = item.latestMessage?.messageUserInfos?.find(
+      (item) => item.user.id === userProfile?.user.id,
+    );
+    if (isExisted) return;
 
-      temp += 1;
-    });
-
-    return temp;
-  }, [conversationData]);
+    unreadConversation += 1;
+  });
 
   const conversations =
     conversationData?.pages.flatMap((page) => page.items) || [];
@@ -128,10 +125,8 @@ export const Header = () => {
     const handleNewConversation = (payload: ICreateConversationSocketRes) => {
       const { conversation, creatorId } = payload;
 
-      queryClient.invalidateQueries({
-        predicate: ({ queryKey }) =>
-          queryKey.includes(QUERY_KEYS.INFINITE_CONVERSATION),
-      });
+      queryClient.invalidateQueries([QUERY_KEYS.INFINITE_CONVERSATION]);
+      queryClient.invalidateQueries([QUERY_KEYS.CONVERSATION_BY_USER]);
 
       if (creatorId === userProfile?.user.id) return;
 

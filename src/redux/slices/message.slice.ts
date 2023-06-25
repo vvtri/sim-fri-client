@@ -35,14 +35,16 @@ const addConversationThunk = createAsyncThunk(
     conversationId,
     userId,
     shouldCloseCreate,
+    shouldCloseNew,
   }: {
     conversationId: number;
     userId?: number;
     shouldCloseCreate?: boolean;
+    shouldCloseNew?: boolean;
   }) => {
     try {
       const conversation = await getDetailConversation(conversationId);
-      return { conversation, userId, shouldCloseCreate };
+      return { conversation, userId, shouldCloseCreate, shouldCloseNew };
     } catch (error) {
       console.log(error);
       return null;
@@ -159,7 +161,8 @@ const messageSlice = createSlice({
     builder.addCase(addConversationThunk.fulfilled, (state, action) => {
       if (!action.payload) return;
 
-      const { conversation, userId, shouldCloseCreate } = action.payload;
+      const { conversation, userId, shouldCloseCreate, shouldCloseNew } =
+        action.payload;
 
       let openConversations: OpenConversation[] = [];
       if (conversation.isGroup) {
@@ -175,7 +178,7 @@ const messageSlice = createSlice({
         openConversations = state.messageBox.openConversations.filter(
           (item) => {
             if (item.isCreateConversation) return !shouldCloseCreate;
-            if (item.isNewConversation) return true;
+            if (item.isNewConversation) return !shouldCloseNew;
 
             if (item.userProfile?.user.id === userId) return false;
             else return true;

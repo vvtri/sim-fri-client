@@ -39,8 +39,8 @@ export const EmojiPicker = forwardRef<HTMLDivElement, EmojiPickerProps>(
       >
         <EmojiPickerReact
           emojiStyle={EmojiStyle.NATIVE}
-          skinTonesDisabled
-          searchDisabled
+          // skinTonesDisabled
+          // searchDisabled
           theme={Theme.DARK}
           height={350}
           {...emojiProps}

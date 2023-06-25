@@ -105,8 +105,6 @@ export const UserProfileEditDialog = () => {
     mutate(value as any);
   };
 
-  console.log('errors', errors);
-
   return (
     <Box>
       <CustomDialog

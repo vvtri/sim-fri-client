@@ -61,7 +61,8 @@ export const MessageBoxAction = ({
           addConversationThunk({
             userId: userProfile?.user?.id,
             conversationId: data.conversationId,
-            shouldCloseCreate: true,
+            shouldCloseCreate: isCreateConversation,
+            shouldCloseNew: isNewConversation,
           }),
         );
       }

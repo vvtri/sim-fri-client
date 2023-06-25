@@ -6,11 +6,15 @@ import {
   Tooltip,
   Typography,
 } from '@mui/material';
+import { useQueryClient } from '@tanstack/react-query';
 import dayjs from 'dayjs';
 import { useEffect, useRef, useState } from 'react';
 import { MessageReadInfoStatus } from 'shared';
 import { IUser } from '../../../auth/common/interfaces/res/user.res.interface';
-import { emptyAvatarUrl } from '../../../common/constants/index.constant';
+import {
+  QUERY_KEYS,
+  emptyAvatarUrl,
+} from '../../../common/constants/index.constant';
 import { useAuth } from '../../../common/hooks/use-auth';
 import { useIsInViewport } from '../../../common/hooks/use-is-in-viewport';
 import { useReadMessage } from '../../common/hooks/use-read-message';
@@ -35,10 +39,14 @@ export const MessageBoxMessageLineText = ({
   isGroup,
   afterMutateMsg,
 }: MessageBoxMessageLineTextProps) => {
+  const queryClient = useQueryClient();
   const ref = useRef<HTMLDivElement | null>(null);
   const isInViewport = useIsInViewport(ref);
   const { mutate, isLoading: isMutateReadMessage } = useReadMessage({
-    onSuccess: (data) => afterMutateMsg(data, message),
+    onSuccess: (data) => {
+      afterMutateMsg(data, message);
+      queryClient.invalidateQueries([QUERY_KEYS.INFINITE_CONVERSATION]);
+    },
     onError(error, variables, context) {
       console.log('error', error);
     },

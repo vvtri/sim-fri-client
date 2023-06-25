@@ -43,10 +43,17 @@ export const UserProfileIntroCard = ({}: UserProfileIntroCardProps) => {
             <Stack direction="row" spacing="6px">
               <WorkIcon />
 
-              <Typography>Works at</Typography>
-              <Typography sx={{ textDecoration: 'underline' }} color="white">
-                {userProfile?.workplace}
-              </Typography>
+              <Stack direction="row" spacing="6px" width="100%">
+                <Typography flexShrink="0">Works at</Typography>
+                <Typography
+                  flexGrow="1"  
+                  sx={{ textDecoration: 'underline' }}
+                  color="white"
+                  textAlign="right"
+                >
+                  {userProfile?.workplace}
+                </Typography>
+              </Stack>
             </Stack>
           ) : isMyProfile ? (
             <Button
@@ -69,14 +76,20 @@ export const UserProfileIntroCard = ({}: UserProfileIntroCardProps) => {
           {userProfile?.address ? (
             <Stack direction="row" spacing="6px">
               <HomeIcon />
+
               <Stack
-                alignItems="center"
+                alignItems="flex-start"
                 direction="row"
                 textTransform="capitalize"
                 spacing="6px"
+                width="100%"
               >
-                <Typography>Lives in</Typography>
-                <Typography sx={{ textDecoration: 'underline' }} color="white">
+                <Typography flexShrink="0">Lives in</Typography>
+                <Typography
+                  sx={{ textDecoration: 'underline' }}
+                  color="white"
+                  textAlign="right"
+                >
                   {userProfile?.address}
                 </Typography>
               </Stack>
@@ -109,13 +122,19 @@ export const UserProfileIntroCard = ({}: UserProfileIntroCardProps) => {
             <Stack direction="row" spacing="6px">
               <PlaceIcon />
               <Stack
-                alignItems="center"
+                alignItems="flex-start"
                 direction="row"
                 textTransform="capitalize"
                 spacing="6px"
+                justifyContent="space-between"
+                width="100%"
               >
-                <Typography>From</Typography>
-                <Typography sx={{ textDecoration: 'underline' }} color="white">
+                <Typography flexShrink="0">From</Typography>
+                <Typography
+                  sx={{ textDecoration: 'underline' }}
+                  color="white"
+                  textAlign="right"
+                >
                   {userProfile?.hometown}
                 </Typography>
               </Stack>
@@ -148,13 +167,18 @@ export const UserProfileIntroCard = ({}: UserProfileIntroCardProps) => {
             <Stack direction="row" spacing="6px">
               <SchoolIcon />
               <Stack
-                alignItems="center"
+                alignItems="flex-start"
                 direction="row"
                 textTransform="capitalize"
                 spacing="6px"
+                justifyContent="space-between"
               >
-                <Typography>Studied at</Typography>
-                <Typography sx={{ textDecoration: 'underline' }} color="white">
+                <Typography flexShrink="0">Studied at</Typography>
+                <Typography
+                  sx={{ textDecoration: 'underline', wordWrap: 'break-word' }}
+                  color="white"
+                  textAlign="right"
+                >
                   {userProfile?.school}
                 </Typography>
               </Stack>
