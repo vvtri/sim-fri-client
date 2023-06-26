@@ -196,7 +196,7 @@ export const Header = () => {
       zIndex="10"
       height={headerHeight}
     >
-      <Center width="100%" paddingY="10px">
+      <Center width="100%" paddingY="10px" position="relative">
         <Stack
           direction="row"
           alignItems="center"
