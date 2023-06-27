@@ -201,7 +201,7 @@ export const Header = () => {
           direction="row"
           alignItems="center"
           spacing="10px"
-          position="fixed"
+          position="absolute"
           left="0"
           pl="20px"
         >
@@ -264,7 +264,7 @@ export const Header = () => {
           justifyContent="center"
           spacing="10px"
           fontSize="40px"
-          position="fixed"
+          position="absolute"
           right="0"
           pr="20px"
         >
