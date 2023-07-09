@@ -1,5 +1,5 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import { persistReducer } from 'redux-persist';
+import { PersistConfig, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import authReducer from './slices/auth.slice';
 import commonSlice from './slices/common.slice';
@@ -11,11 +11,11 @@ import profileSlice from './slices/profile.slice';
 import searchSlice from './slices/search.slice';
 import verifyUserReducer from './slices/verify-user.slice';
 
-const rootPersistConfig = {
+const rootPersistConfig: PersistConfig<any> = {
   key: 'root',
   storage,
-  blacklist: ['common', 'post'],
   version: 1,
+  whitelist: ['message'],
 };
 
 const commonPersistConfig = {
